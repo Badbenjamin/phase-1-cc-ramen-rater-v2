@@ -29,28 +29,42 @@ const addSubmitListener = () => {
   newRamenForm.addEventListener('submit', (e) => {
     e.preventDefault()
 
+    // get image form input
+    const imageInput = document.getElementById('new-image')
+    // get name form input
+    const nameInput = document.getElementById('new-name');
+    // get comment name form input
+    const commentInput = document.getElementById('new-comment')
+    // restaraunt info
+    const restarauntInput = document.getElementById('new-restaurant')
+    // rating
+    const ratingInput = document.getElementById('new-rating');
+
+    
+    
+    // store form info in object?
+    const newRamenObject = {
+      comment: commentInput.value,
+      id: "",
+      image: imageInput.value,
+      name: nameInput.value,
+      rating: ratingInput.value,
+      restaurant: restarauntInput.value
+    }
+
+    console.log(newRamenObject)
+    
+
     // create new div element with form submit
     const ramenMenu = document.getElementById('ramen-menu')
     const imageElement = document.createElement('img');
+    imageElement.src = imageInput.value;
     ramenMenu.appendChild(imageElement)
 
-    // add image to restaraunt menu div
-    const imageInput = document.getElementById('new-image')
-    imageElement.src = imageInput.value;
-    // get name form input, change name Element
-    const nameInput = document.getElementById('new-name');
-
-    handleClick()
-    
-   
-    // // get restaraunt form input, change restaraunt element
-    // const restarauntInput = document.getElementById('new-restaurant')
-    // const restarauntName = document.getElementsByClassName("restaurant")[0];
-    // restarauntName.textContent = restarauntInput.value;
-    // // get image url, update image 
-    // const imageInput = document.getElementById('new-image')
-    // const detailImage = document.getElementsByClassName("detail-image")[0];
-    // detailImage.src = imageInput.value;
+    // add click event to new image
+    imageElement.addEventListener("click", () => {
+      handleClick(newRamenObject);
+    })
   })
 }
 
