@@ -2,7 +2,22 @@
 
 // Callbacks
 const handleClick = (ramen) => {
-  // Add code
+  // add bindings to DOM elements
+  const detailImage = document.getElementsByClassName("detail-image")[0];
+  detailImage.src = ramen.image;
+
+  const name = document.getElementsByClassName('name')[0];
+  name.textContent = ramen.name;
+
+  const restarauntName = document.getElementsByClassName("restaurant")[0];
+  restarauntName.textContent = ramen.restaurant;
+
+  const ratingDisplay = document.getElementById('rating-display')
+  ratingDisplay.textContent = ramen.rating;
+
+  const commentDisplay = document.getElementById('comment-display')
+  commentDisplay.textContent = ramen.comment;
+
 };
 
 const addSubmitListener = () => {
@@ -21,6 +36,12 @@ fetch("http://localhost:3000/ramens")
       const imageElement = document.createElement('img');
       imageElement.src = ramen.image;
       ramenMenu.appendChild(imageElement)
+
+      // add event listener to each image
+      imageElement.addEventListener("click", () => {
+          handleClick(ramen)
+      })
+
     })
   })
   
