@@ -1,5 +1,7 @@
 // index.js
 
+
+
 // Callbacks
 const handleClick = (ramen) => {
   // add bindings to DOM elements
@@ -21,7 +23,35 @@ const handleClick = (ramen) => {
 };
 
 const addSubmitListener = () => {
-  // Add code
+  const newRamenForm = document.getElementById('new-ramen');
+  
+  // add event listener
+  newRamenForm.addEventListener('submit', (e) => {
+    e.preventDefault()
+
+    // create new div element with form submit
+    const ramenMenu = document.getElementById('ramen-menu')
+    const imageElement = document.createElement('img');
+    ramenMenu.appendChild(imageElement)
+
+    // add image to restaraunt menu div
+    const imageInput = document.getElementById('new-image')
+    imageElement.src = imageInput.value;
+    // get name form input, change name Element
+    const nameInput = document.getElementById('new-name');
+
+    handleClick()
+    
+   
+    // // get restaraunt form input, change restaraunt element
+    // const restarauntInput = document.getElementById('new-restaurant')
+    // const restarauntName = document.getElementsByClassName("restaurant")[0];
+    // restarauntName.textContent = restarauntInput.value;
+    // // get image url, update image 
+    // const imageInput = document.getElementById('new-image')
+    // const detailImage = document.getElementsByClassName("detail-image")[0];
+    // detailImage.src = imageInput.value;
+  })
 }
 
 const displayRamens = () => {
@@ -52,6 +82,7 @@ const main = () => {
  // Invoke displayRamens here
     displayRamens();
   // Invoke addSubmitListener here 
+    addSubmitListener()
   })
  
 }
